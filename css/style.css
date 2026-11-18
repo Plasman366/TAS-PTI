@@ -1,4 +1,4 @@
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap');
 
 html,
 body {
@@ -203,6 +203,31 @@ header {
     margin-bottom: 0;
 }
 
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.profile-stats > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background-color: #161513;
+}
+
+.profile-stats strong {
+    color: #D4AF37;
+}
+
+.profile-stats span {
+    color: #C8BEB4;
+    font-size: 0.9rem;
+}
+
 @media (max-width: 900px) {
     .tentang-saya-content {
         flex-direction: column;
@@ -316,7 +341,7 @@ header {
 }
 
 .project-mark {
-    height: 120px;
+    height: 190px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -325,6 +350,19 @@ header {
     font-size: 2.4rem;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(22, 21, 19, 0.8));
     border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.project-image {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.project-image-contain {
+    object-fit: contain;
+    background-color: #fff;
 }
 
 .project-body {
@@ -340,6 +378,18 @@ header {
     margin-top: 8px;
     color: #D4AF37;
     font-size: 0.85rem;
+}
+
+.project-link {
+    display: block;
+    width: fit-content;
+    margin-top: 14px;
+    color: #D4AF37;
+    text-underline-offset: 4px;
+}
+
+.project-link:hover {
+    color: #EAE0D5;
 }
 
 /* Contact */
@@ -376,6 +426,23 @@ header {
 .contact-links a:hover {
     color: #D4AF37;
     background-color: transparent;
+}
+
+.contact-cta {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 20px;
+    color: #EAE0D5;
+    border: 1px solid #D4AF37;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-cta:hover {
+    color: #1A1C20;
+    background-color: #D4AF37;
 }
 
 /* Bonus video */
@@ -432,6 +499,10 @@ header {
     }
 
     .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-stats {
         grid-template-columns: 1fr;
     }
 
