@@ -1,0 +1,446 @@
+@import url('https://googleapis.com');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: "Courier Prime", monospace;
+    background-color: #161513;
+    color: #EAE0D5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section,
+header {
+    scroll-margin-top: 105px;
+}
+
+.wrapper {
+    max-width: 1140px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Navbar */
+nav {
+    background-color: #1A1C20;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav > .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.menu > ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Disesuaikan agar 6 menu muat rapi dalam satu baris */
+}
+
+.menu > ul > li > a {
+    text-decoration: none;
+    color: #EAE0D5;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.menu > ul > li > a:hover {
+    color: #D4AF37;
+}
+
+/* Hero / Jumbotron */
+header {
+    background-image: url('../bg-header.jpg'); /* Memakai '../' karena CSS ada di dalam folder css/ */
+    background-color: #161513;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+    position: relative; /* Wajib ada agar lapisan opacity menempel pas di dalam header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Lapisan gelap transparan di atas gambar background */
+.header-opacity {
+    background-color: rgba(22, 21, 19, 0.78);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Lapisan ke-1 (di bawah tulisan) */
+}
+
+/* Kontainer Tulisan di Tengah */
+.header-jumbotron {
+    position: relative;
+    z-index: 2; /* Lapisan ke-2 (di atas lapisan gelap sehingga tulisan muncul jelas!) */
+    max-width: 850px;
+    padding: 0 20px;
+}
+
+.header-jumbotron h4 {
+    color: #D4AF37; /* Emas antik */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+}
+
+.header-jumbotron h5 {
+    font-family: "Cinzel", serif; /* Font klasik berwibawa untuk kutipan utama */
+    color: #EAE0D5;
+    font-size: 1.9rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.header-jumbotron p {
+    color: #C8BEB4;
+    font-size: 1.15rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Tentang Saya */
+#tentang-saya {
+    background-color: #1A1C20;
+    padding: 90px 0;
+}
+
+.tentang-saya-wrapper {
+    text-align: center;
+}
+
+.tentang-saya-heading h4 {
+    color: #D4AF37;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
+.tentang-saya-heading h2 {
+    font-family: "Cinzel", serif;
+    font-size: 2.4rem;
+    margin: 0 0 40px;
+    color: #EAE0D5;
+}
+
+.tentang-saya-content {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    text-align: left;
+}
+
+.tentang-saya-foto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 12px;
+    flex: 1.15;
+}
+
+.tentang-saya-foto img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 4px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    
+}
+
+.tentang-saya-foto img:nth-child(2) {
+    height: 320px;
+}
+
+.tentang-saya-text {
+    flex: 0.85;
+}
+
+.tentang-saya-text p {
+    color: #C8BEB4;
+    line-height: 1.9;
+    margin: 0 0 18px;
+}
+
+.tentang-saya-text p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .tentang-saya-content {
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .tentang-saya-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #tentang-saya {
+        padding: 65px 0;
+    }
+
+    .tentang-saya-heading h2 {
+        font-size: 1.9rem;
+    }
+
+    .tentang-saya-foto {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .tentang-saya-foto img,
+    .tentang-saya-foto img:nth-child(2) {
+        height: 360px;
+    }
+}
+
+/* Section umum */
+.section-section {
+    padding: 90px 0;
+    background-color: #161513;
+}
+
+.dark-section {
+    background-color: #1A1C20;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h4 {
+    color: #D4AF37;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
+.section-heading h2 {
+    font-family: "Cinzel", serif;
+    color: #EAE0D5;
+    font-size: 2.4rem;
+    margin: 0;
+}
+
+/* Skills Showcase */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    min-height: 220px;
+    padding: 28px;
+    background-color: #1A1C20;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 4px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: #D4AF37;
+}
+
+.skill-number {
+    color: #D4AF37;
+    font-family: "Cinzel", serif;
+    font-size: 1.1rem;
+}
+
+.skill-card h3,
+.project-card h3 {
+    color: #EAE0D5;
+    margin: 28px 0 12px;
+}
+
+.skill-card p,
+.project-card p {
+    color: #C8BEB4;
+    line-height: 1.7;
+}
+
+/* Proyek dan Karya */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.project-card {
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background-color: #161513;
+}
+
+.project-mark {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D4AF37;
+    font-family: "Cinzel", serif;
+    font-size: 2.4rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(22, 21, 19, 0.8));
+    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.project-body {
+    padding: 25px;
+}
+
+.project-body h3 {
+    margin-top: 0;
+}
+
+.project-body span {
+    display: inline-block;
+    margin-top: 8px;
+    color: #D4AF37;
+    font-size: 0.85rem;
+}
+
+/* Contact */
+.contact-wrapper {
+    max-width: 760px;
+    text-align: center;
+}
+
+.contact-text {
+    color: #C8BEB4;
+    line-height: 1.8;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.contact-links a {
+    min-width: 120px;
+    padding: 12px 18px;
+    color: #1A1C20;
+    background-color: #D4AF37;
+    border: 1px solid #D4AF37;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: #D4AF37;
+    background-color: transparent;
+}
+
+/* Bonus video */
+.video-wrapper {
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.video-wrapper video {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    background: #000;
+}
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav > .wrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .menu {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .menu > ul {
+        justify-content: center;
+        gap: 20px;
+        width: max-content;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-section {
+        padding: 65px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 1.9rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        min-height: auto;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
